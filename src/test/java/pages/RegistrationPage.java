@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.TableResultComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -10,7 +11,7 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static com.codeborne.selenide.Condition.cssValue;
 
 public class RegistrationPage {
-    private SelenideElement firstNameInput = $("#firstName"),
+    private final SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
             genderWrapper = $("#genterWrapper"),
@@ -26,6 +27,7 @@ public class RegistrationPage {
             redGenderWraper = $("#genterWrapper .custom-control-label");
 
     CalendarComponent calendarComponent = new CalendarComponent();
+    TableResultComponent tableResultComponent = new TableResultComponent();
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
@@ -115,8 +117,7 @@ public class RegistrationPage {
 
 
     public RegistrationPage checkResult(String key, String value) {
-        $(".table-responsive").$(byText(key)).parent()
-                .shouldHave(text(value));
+        tableResultComponent.checkResult(key,value);
 
         return this;
     }
