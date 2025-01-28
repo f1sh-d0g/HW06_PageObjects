@@ -10,6 +10,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
     @Test
     void successfulRegistrationTest() {
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Dmitrii")
                 .setLastName("Borovkov")
                 .setEmail("dmitry@borovkov.com")
@@ -41,6 +42,7 @@ public class RegistrationWithPageObjectsTests extends TestBase {
         RegistrationPage registrationPage = new RegistrationPage();
 
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Dmitrii")
                 .setLastName("Borovkov")
                 .setGender("Male")
@@ -60,9 +62,9 @@ public class RegistrationWithPageObjectsTests extends TestBase {
         RegistrationPage registrationPage = new RegistrationPage();
 
         registrationPage.openPage()
+                .removeBanner()
                 .setFirstName("Dmitrii")
                 .setLastName("Borovkov")
-                //.setGender("Male") - обязательное поле не заполнено
                 .setUserPhoneNumber("7999888770")
                 .setDateOfBirth("30", "July", "2008")
                 .submitForm();
